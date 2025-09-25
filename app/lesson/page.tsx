@@ -1,11 +1,11 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, Suspense } from 'react'
 import { useSearchParams, useRouter } from 'next/navigation'
 import { CulturalCard } from '@/components/ui/cultural-card'
 import { culturalLessons, culturalRegions } from '@/lib/cultural-data'
 
-export default function LessonPage() {
+function LessonPageContent() {
   const searchParams = useSearchParams()
   const router = useRouter()
   const regionId = searchParams.get('region')
@@ -275,5 +275,15 @@ export default function LessonPage() {
         )}
       </div>
     </div>
+  )
+}
+
+export default function LessonPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-gradient-to-br from-russian-cream via-white to-russian-gold/10 flex items-center justify-center">
+      <div className="text-russian-brown">Загрузка...</div>
+    </div>}>
+      <LessonPageContent />
+    </Suspense>
   )
 }
