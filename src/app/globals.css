@@ -35,6 +35,19 @@ All colors MUST be HSL.
 
   --radius: 0.5rem;
 
+  /* Russian Cultural Theme Colors */
+  --russian-red: 0 70% 35%;
+  --russian-red-light: 0 70% 45%;
+  --russian-red-dark: 0 70% 25%;
+  --russian-gold: 45 90% 55%;
+  --russian-gold-light: 45 90% 65%;
+  --russian-gold-dark: 45 90% 45%;
+  --russian-green: 120 40% 25%;
+  --russian-green-light: 120 40% 35%;
+  --russian-green-dark: 120 40% 15%;
+  --russian-cream: 40 30% 95%;
+  --russian-brown: 25 40% 30%;
+
   --sidebar-background: 0 0% 98%;
   --sidebar-foreground: 240 5.3% 26.1%;
   --sidebar-primary: 240 5.9% 10%;
@@ -124,7 +137,20 @@ All colors MUST be HSL.
   --color-sidebar-accent-foreground: hsl(var(--sidebar-accent-foreground));
   --color-sidebar-border: hsl(var(--sidebar-border));
   --color-sidebar-ring: hsl(var(--sidebar-ring));
-  
+
+  /* Russian Cultural Colors */
+  --color-russian-red: hsl(var(--russian-red));
+  --color-russian-red-light: hsl(var(--russian-red-light));
+  --color-russian-red-dark: hsl(var(--russian-red-dark));
+  --color-russian-gold: hsl(var(--russian-gold));
+  --color-russian-gold-light: hsl(var(--russian-gold-light));
+  --color-russian-gold-dark: hsl(var(--russian-gold-dark));
+  --color-russian-green: hsl(var(--russian-green));
+  --color-russian-green-light: hsl(var(--russian-green-light));
+  --color-russian-green-dark: hsl(var(--russian-green-dark));
+  --color-russian-cream: hsl(var(--russian-cream));
+  --color-russian-brown: hsl(var(--russian-brown));
+
   /* Border Radius */
   --radius-lg: var(--radius);
   --radius-md: calc(var(--radius) - 2px);
@@ -160,4 +186,117 @@ All colors MUST be HSL.
 body {
   background-color: hsl(var(--background));
   color: hsl(var(--foreground));
+}
+
+/* Mobile-first responsive utilities */
+@media (max-width: 768px) {
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  /* Mobile typography adjustments */
+  h1 { font-size: 1.875rem; line-height: 2.25rem; }
+  h2 { font-size: 1.5rem; line-height: 2rem; }
+  h3 { font-size: 1.25rem; line-height: 1.75rem; }
+
+  /* Mobile touch targets */
+  button, .clickable {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Mobile spacing */
+  .mobile-spacing {
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+  }
+
+  /* Cultural card mobile adjustments */
+  .cultural-card-mobile {
+    height: 200px !important;
+  }
+
+  .cultural-card-mobile .cultural-content {
+    padding: 1rem;
+  }
+
+  /* Progress animation mobile */
+  .progress-mobile {
+    height: 6px;
+    margin-bottom: 0.5rem;
+  }
+}
+
+/* Portrait orientation optimizations */
+@media (orientation: portrait) {
+  .portrait-stack {
+    flex-direction: column;
+  }
+
+  .portrait-full-width {
+    width: 100%;
+  }
+
+  /* Optimize grid layouts for portrait */
+  .grid-portrait-1 {
+    grid-template-columns: 1fr;
+  }
+
+  .grid-portrait-2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Landscape adjustments for small screens */
+@media (max-width: 768px) and (orientation: landscape) {
+  .landscape-compact {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+
+  /* Hide some elements on landscape mobile to save space */
+  .hide-landscape-mobile {
+    display: none;
+  }
+}
+
+/* Touch-friendly improvements */
+@media (hover: none) and (pointer: coarse) {
+  /* Remove hover effects on touch devices */
+  .hover\\:scale-105:hover {
+    transform: none;
+  }
+
+  /* Larger touch targets */
+  .touch-target {
+    padding: 1rem;
+    min-height: 48px;
+  }
+
+  /* Easier swipe detection */
+  .swipeable {
+    touch-action: pan-y;
+  }
+}
+
+/* High DPI screen optimizations */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  /* Sharper images for retina displays */
+  .russian-pattern-bg {
+    background-size: 100px 100px;
+  }
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .progress-animation {
+    transition: none;
+  }
 }
